@@ -1,0 +1,35 @@
+{
+  "name": "cloudsec-pi",
+  "version": "0.4.0",
+  "description": "Defensive cloud and host security audit control plane for Pi",
+  "type": "module",
+  "keywords": [
+    "pi-package",
+    "pi",
+    "cloud-security",
+    "security-audit"
+  ],
+  "license": "MIT",
+  "files": [
+    "index.js",
+    "pi.js",
+    "lib/",
+    "skills/",
+    "README.md",
+    "SECURITY.md",
+    "LICENSE"
+  ],
+  "pi": {
+    "extensions": [
+      "./pi.js"
+    ],
+    "skills": [
+      "./skills"
+    ]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-ai": "*",
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*"
+  }
+}

@@ -1,0 +1,15 @@
+node_modules/
+.pi/
+.scratch/
+coverage/
+.DS_Store
+*.tmp
+*.log
+*.tgz
+.env
+.env.*
+.npmrc
+*.pem
+*.key
+*.p12
+*.pfx
