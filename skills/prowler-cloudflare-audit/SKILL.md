@@ -15,7 +15,7 @@ Use a least-privilege Cloudflare API token through `CLOUDFLARE_API_TOKEN`, or th
 ## Procedure
 
 1. Establish that every Cloudflare account and zone visible to the credentials is owned or expressly authorised. If scope is uncertain, stop before invoking Prowler.
-2. Call `cloudsec_doctor` with `scanner: "prowler"`. Stop if unavailable.
+2. Call `cloudsec_doctor` with `scanner: "prowler"`. Stop if unavailable and offer `/cloudsec-setup` as a separate human-confirmed preparation workflow.
 3. Confirm that the expected Cloudflare credential variable names are present. Discuss names only, never values.
 4. Call `cloudsec_prowler` with `provider: "cloudflare"`. Review the environment names and network boundary in the confirmation.
 5. Read `metadata` and `report` with `cloudsec_evidence`. Use redacted `stderr` only for operational failure.

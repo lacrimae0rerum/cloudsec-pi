@@ -4,6 +4,7 @@ import { readEvidence } from "./lib/evidence.js";
 import { createOrchestrator } from "./lib/orchestrator.js";
 import { formatPlan, preparePlan } from "./lib/plan.js";
 import { recordPlanState, runPlan } from "./lib/runner.js";
+import { runSetupProcess } from "./lib/setup.js";
 import { collectCloudsecStatus, collectRunStatus, formatCloudsecStatus, formatRunStatus } from "./lib/status.js";
 
 const CONFIRM_TIMEOUT_MS = 300_000;
@@ -34,7 +35,7 @@ async function executePlan(input, ctx, signal, dependencies) {
 }
 
 const fallbackControlUi = Object.freeze({
-  chooseAction: async (ctx) => ctx.ui.select("Cloud security control centre", ["doctor", "audit", "status", "cancel"]),
+  chooseAction: async (ctx) => ctx.ui.select("Cloud security control centre", ["doctor", "setup", "audit", "status", "cancel"]),
   chooseScanners: async () => ["trivy"],
   run: async (_ctx, _message, operation) => operation(new AbortController().signal),
 });
@@ -55,6 +56,7 @@ export function registerCloudsec(pi, schemas, overrides = {}) {
     readEvidence,
     recordPlanState,
     runPlan,
+    runSetupProcess,
     ...overrides,
   };
   const { Type, StringEnum } = schemas;

@@ -11,7 +11,7 @@ Produce a concise security assessment from private Trivy evidence without exposi
 ## Procedure
 
 1. Establish that the filesystem or image is owned or expressly authorised for assessment. State the exact scope.
-2. Call `cloudsec_doctor` with `scanner: "trivy"`. Stop if unavailable; give the official installation link from the package README rather than installing it.
+2. Call `cloudsec_doctor` with `scanner: "trivy"`. Stop if unavailable; direct the operator to `/cloudsec-setup` or the official installation link in the package README. The audit itself never installs a scanner.
 3. Choose one target:
    - `fs`: a project-relative path inside the current repository. Use for source, dependencies, secrets, Dockerfiles and IaC.
    - `image`: an explicit container image reference. Explain that registry or Docker socket access may occur and let `cloudsec_trivy` obtain confirmation.

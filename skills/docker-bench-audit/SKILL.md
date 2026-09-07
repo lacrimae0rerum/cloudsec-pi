@@ -12,7 +12,7 @@ Assess one local Linux Docker host and preserve the native benchmark evidence pr
 
 - The host is owned or expressly authorised.
 - Pi is running on the Linux Docker host being assessed. Remote and Docker Desktop audits are outside v0.4.
-- The operator obtained Docker Bench from `https://github.com/docker/docker-bench-security`, reviewed it and set `DOCKER_BENCH_SECURITY_PATH` to the absolute `docker-bench-security.sh` path.
+- The operator obtained and reviewed Docker Bench from `https://github.com/docker/docker-bench-security`, using separately confirmed `/cloudsec-setup` or an absolute `DOCKER_BENCH_SECURITY_PATH`. The persisted setup path is used when that environment override is absent.
 - cloudsec-pi validates the script path, writable bits and SHA-256. This verifies what was confirmed, not upstream authenticity.
 
 ## Procedure

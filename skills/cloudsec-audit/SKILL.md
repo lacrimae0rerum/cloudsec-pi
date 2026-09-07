@@ -22,7 +22,7 @@ Use more than one only when the scopes are genuinely distinct. A Docker host rev
 
 ## Interactive combined workflow
 
-- `/cloudsec` opens the control centre.
+- `/cloudsec` opens the control centre; `/cloudsec-setup` offers separately confirmed local scanner preparation.
 - `/cloudsec-audit` creates a new serial combined audit.
 - `/cloudsec-audit <audit-id>` explicitly resumes failed, cancelled, blocked or incomplete work at a scanner boundary.
 - `/cloudsec-status` lists the closed audit and run projection.
@@ -74,7 +74,7 @@ Resume never reuses a plan or confirmation. Risky phases require a new immediate
 
 ## Boundaries
 
-- cloudsec-pi is read-only and interactive-first. It performs no remediation, SSH, CI automation or result upload.
+- Audits are read-only and interactive-first; optional scanner setup is a separate confirmed local mutation. It performs no remediation, SSH, CI automation or result upload.
 - Tool confirmations are workflow guardrails, not scanner containment.
 - A clean result is evidence for covered checks only, not proof of security.
 - Combined audits are serial, have no automatic retry and resume only at scanner boundaries.

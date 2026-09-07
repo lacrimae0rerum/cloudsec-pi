@@ -6,9 +6,21 @@ cloudsec-pi is for defensive assessment of systems, artefacts and cloud resource
 
 The package validates and confirms the commands built by its own tools. It is not a sandbox. Installed scanners execute with the operator's rights, filesystem visibility, credentials and network access. TUI confirmations are workflow gates, not identity verification.
 
+## Optional local setup
+
+`/cloudsec-setup` is a TUI-only human command, not a model tool. Every installation and private configuration write requires a separate fresh five-minute approval after exact source, executable, argv and effects are displayed. Escape, decline and expiry do not grant authority. Doctor and audits never trigger installation.
+
+Fixed recipes reuse existing Homebrew, uv, pipx or Git. Homebrew `brew.env` disk configuration is blocked to prevent alternate-source, credential or wrapper injection. Installed apt/dnf may yield structured manual terminal instructions and a one-shot re-probe, never automatic privileged execution. Existing scanner installations are reused without upgrade requests. Prerequisite managers, Python, privileges and services are never bootstrapped automatically; missing prerequisites report blocked with official manual guidance. No arbitrary URL/package/argv, project-local installer or sudo is accepted. Docker Bench and Lynis stay local-Linux-only.
+
+Installer children have an isolated private HOME/TMPDIR, restricted PATH and fixed manager settings, not inherited cloud/provider credentials, proxies, package configuration or Git authentication helpers. Installation still executes upstream code with the user's OS rights: this is not a filesystem/network sandbox. Package-manager downloads/dependency builds can access the network and write their existing prefix or private setup/cache paths. Output is withheld, capped at 64 KiB and bounded by a two-minute process timeout. Cancellation terminates the process group; failure/cancellation stops remaining selections without retry. Only the invocation's owned temporary working directory is removed. Partial package-manager or source state may remain for operator inspection.
+
+Non-secret canonical JSON at `cloudsec-pi/setup/config.json` stores only schema version and closed scanner executable paths (`0700/0600`, atomic replacement). Reads reject unsafe storage ancestors, symlinks, traversal, unknown/duplicate keys and permissive storage. Missing saved executables remain explicit unavailable entries; physical executable validation occurs for the selected scanner after environment overrides, so unrelated scanners remain usable. Existing ancestor permissions are never changed by setup. Explicit scanner-path environment overrides take precedence; doctor and plans reload configuration after restart. `setup/.tools.lock` exclusively guards setup mutations and actual scanner processes across sessions; stale locks fail closed and require manual inspection, never PID signalling or automatic reclamation.
+
+Docker daemon readiness checks use only a fixed local Unix socket and never start services or audit the host. Versions, source integrity, daemon access, dependencies, privileges and authentication are separate readiness dimensions. Cloudflare setup reports names/presence with authentication-unverified, never a full-ready verdict or a credentialed validation call.
+
 ## Credential handling
 
-- Tool schemas accept no secret values.
+- Tool schemas, setup TUI, setup config and logs accept no secret values.
 - Prowler reads Cloudflare credentials from its documented native environment variables.
 - Scanner processes receive an allowlist of environment variables; metadata records names only.
 - Native evidence is mode `0600` under a mode `0700` run directory.
@@ -29,7 +41,7 @@ These are invocation policies, not network enforcement. Use an operating-system 
 
 ## Docker Bench
 
-`DOCKER_BENCH_SECURITY_PATH` must identify the official `docker-bench-security.sh` file on the local Linux host. cloudsec-pi rejects symlinks and writable path components, shows the SHA-256 during confirmation and rechecks identity before execution. The operator remains responsible for obtaining and reviewing the source.
+`DOCKER_BENCH_SECURITY_PATH` must identify the official `docker-bench-security.sh` file on the local Linux host. cloudsec-pi rejects symlinks and writable path components, shows the SHA-256 during confirmation and rechecks identity before execution. The operator remains responsible for reviewing the source. Optional setup clones only the fixed official Git URL into a new private managed directory, never overwrites user source, and displays the revision and script hash before separately confirming path persistence. A checksum is integrity evidence, not proof of upstream provenance; existing source may instead be selected with the explicit environment override.
 
 ## Combined-audit state
 

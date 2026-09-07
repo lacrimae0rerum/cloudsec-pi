@@ -11,7 +11,7 @@ Assess a local Linux host with explicit privilege and coverage statements.
 ## Procedure
 
 1. Confirm that the local Linux host is owned or expressly authorised. cloudsec-pi v0.4 does not run Lynis remotely.
-2. Call `cloudsec_doctor` with `scanner: "lynis"`. Stop if unsupported or unavailable; do not install it automatically.
+2. Call `cloudsec_doctor` with `scanner: "lynis"`. Stop if unsupported or unavailable. On Linux, offer `/cloudsec-setup` as a separate human-confirmed workflow; never install during an audit.
 3. Choose privilege:
    - `privileged: false` for a limited user-level posture review.
    - `privileged: true` for broader host coverage. Explain the root boundary and obtain the tool's confirmation.
